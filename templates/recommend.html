@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Search Bar with Bootstrap</title>
+	<!-- Link to Bootstrap stylesheet -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+	<center><h1>Recommend Movies</h1></center>
+	<div class="container mt-5">
+		<form class="form-inline" action="/recommend_books" method="post">
+			<input name="user_input" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+			<button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+		</form>
+	</div>
+
+	{% if recommendedbooks  %}
+  <h1>Because you read <span style="color:red">{{ searched_book }}</span></h1>
+  <div class="row mt-5">
+    {% for book in recommendedbooks %}
+      <div class="col-md-2">
+        <div class="card">
+          <img class="card-img-top" src="{{ book[2] }}" alt="{{ book[0] }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ book[0] }}</h5>
+            <p class="card-text">{{ book[1] }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+
+
+	
+	
+</body>
+</html>
